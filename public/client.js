@@ -28,21 +28,17 @@ function clickHandlerSubmit() {
     console.log(calculations);
     }
 
-    function render(resultHistory) {
-      console.log(resultHistory);
-      const $answers = $('.js-calculations');
-
-      $answers.empty();
-      for (let i = 0; i < resultHistory.length; i++) {
-        const round = resultHistory[i];
-
-      $results.append(`<li>Round ${i + 1}</li>`);
-        for (let totals of round) {
-          $results.append(
-            `<li>${totals.x}, ${totals.operator}, ${totals.y}, ${totals.answers}</li>`
-          );
-        }
-    }}
+    function render(result) {
+      const results = $('.js-calculations');
+      results.text(result);}
+      //$answers.empty();
+      //$answers.append(`<li>Round ${response}</li>`);
+     //   for (let totals of round) {
+       //   $results.append(
+         //   `<li>${totals.x}, ${totals.operator}, ${totals.y}, ${totals.answers}</li>`
+          //);
+        //}}
+    
 
     function postGuesses(playerGuesses) {
       // console.log('sending: ', playerGuesses);
@@ -61,15 +57,18 @@ function clickHandlerSubmit() {
         })
     }
 
-    function getResults() {
+    function giveAnswers() {
       $.ajax({
         type: 'GET',
         url: '/calculator',
       })
         .then(function (response) {
+          render(response);
           console.log('GET', response);
         })
         .catch(function (err) {
           console.log(err);
           alert('IT BROKE');
-        });}
+        })}
+
+ 
