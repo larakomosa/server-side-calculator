@@ -41,31 +41,31 @@ const answers = []; // results from calculator
 for (let i =0; i<calculations.length; i++){
   const math = calculations[i];
   
-  if (math.c =='*') {
-  math.a = multiplyNumbers(math.x, math.y)
-  console.log('answer', math.a);
-} else if  (math.c =='/') {
-  math.a = divideNumbers(math.x, math.y)
-  console.log('answer', math.a);
-} else if  (math.c =='-') {
-  math.a = subtractNumbers(math.x, math.y)
-  console.log('answer', math.a);
-} else if  (math.c =='+') {
-    math.a = addNumbers(math.x, math.y)
-  console.log('answer', math.a);
+  if (math.operator =='*') {
+  math.answer = multiplyNumbers(math.x, math.y)
+  console.log('answer', math.answer);
+} else if  (math.operator =='/') {
+  math.answer = divideNumbers(math.x, math.y)
+  console.log('answer', math.answer);
+} else if  (math.operator =='-') {
+  math.answer = subtractNumbers(math.x, math.y)
+  console.log('answer', math.answer);
+} else if  (math.operator =='+') {
+    math.answer = addNumbers(math.x, math.y)
+  console.log(math.x, math.operator, math.y, "=", math.answer);
 }
+console.log(math);
+answers.push(math);
 res.sendStatus(200);
 }});
 
 app.get('/calculator', (req, res) => {
-  res.send("hello!");
+  res.send(answers);
 });
 
 app.listen(PORT, () => {
   console.log ('Server is running on port', PORT)
 });
-
-
 
 console.log(multiplyNumbers(3,5));
 console.log(divideNumbers(3,5));
