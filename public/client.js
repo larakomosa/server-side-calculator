@@ -51,23 +51,23 @@ function clickHandlerSubmit() {
         url: '/math',
         data: {math: playerGuesses}})
         .then(function (response) {
-          console.log('POST of guesses:', response);
+          console.log('POST Response:', response);
           // GET -> results
-          getHistory();
+          getResults();
         })
         .catch(function (err) {
           console.log(err);
-          alert('IT BROKE');
+          alert('Post');
         })
     }
 
-    function getHistory() {
+    function getResults() {
       $.ajax({
         type: 'GET',
         url: '/calculator',
       })
         .then(function (response) {
-          render(response);
+          console.log('GET', response);
         })
         .catch(function (err) {
           console.log(err);
