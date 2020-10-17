@@ -34,33 +34,28 @@ app.use(express.static('public'));
 //}
 
 app.post('/math', (req, res) => {
-const calculations = req.body.math
-console.log('calculations:', calculations );
+const calc = req.body.math
+let answer;
+console.log('calculations:', calc );
 const answers = []; // results from calculator
-
-for (let i =0; i<calculations.length; i++){
-  const math = calculations[i];
-  
-  if (math.operator =='*') {
-  math.answer = multiplyNumbers(, math.y)
-  console.log('answer', math.answer);
-} else if  (math.operator =='/') {
-  math.answer = divideNumbers(math.x, math.y)
-  console.log('answer', math.answer);
-} else if  (math.operator =='-') {
-  math.answer = subtractNumbers(math.x, math.y)
-  console.log('answer', math.answer);
-} else if  (math.operator =='+') {
-    math.answer = addNumbers(math.x, math.y)
-  console.log(math.x, math.operator, math.y, "=", math.answer);
-}
-console.log(math);
-answers.push(math);
-res.sendStatus(200);
-}});
+//for (let i =0; i<calculations.length; i++){
+//const math = calculations[i];
+  if (calc.operator === '+') {
+    calc.answer = Number(calc.x) + Number(calc.y);
+  } else if (calc.operator === '-') {
+    calc.answer = Number(calc.x) + Number(calc.y);
+  } else if (calc.operator === '*') {
+    calc.answer = Number(calc.x) + Number(calc.y);
+  } else if (calc.operator === '/') {
+    calc.answer = Number(calc.x) + Number(calc.y)
+  }
+  console.log(calc.x, calc.operator, calc.y, "+", calc.answer);
+  answers.push(calc.answer)
+  res.sendStatus(200);
+})
 
 app.get('/calculator', (req, res) => {
-  res.send(answers);
+  console.log('hi')
 });
 
 app.listen(PORT, () => {
