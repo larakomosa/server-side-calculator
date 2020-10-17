@@ -42,13 +42,18 @@ for (let i =0; i<calculations.length; i++){
   const math = calculations[i];
   
   if (math.c =='*') {
-    console.log('cat');
-    math.a = multiplyNumbers(math.x, math.y)}
+  math.a = multiplyNumbers(math.x, math.y)
   console.log('answer', math.a);
-  console.log(math.x)
-  
-
-
+} else if  (math.c =='/') {
+  math.a = divideNumbers(math.x, math.y)
+  console.log('answer', math.a);
+} else if  (math.c =='-') {
+  math.a = subtractNumbers(math.x, math.y)
+  console.log('answer', math.a);
+} else if  (math.c =='+') {
+    math.a = addNumbers(math.x, math.y)
+  console.log('answer', math.a);
+}
 res.sendStatus(200);
 }});
 
