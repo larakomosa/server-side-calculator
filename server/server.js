@@ -36,9 +36,21 @@ app.use(express.static('public'));
 app.post('/math', (req, res) => {
 const calculations = req.body;
 console.log('calculations:', calculations );
-const answers = []; //calculations
+const answers = []; // results from calculator
+
+for (let i =0; i<calculations.length; i++){
+  const math = calculations[i];
+  
+  if (math.c =='*') {
+    console.log('cat');
+    math.a = multiplyNumbers(math.x, math.y)}
+  console.log('answer', math.a);
+  console.log(math.x)
+  
+
+
 res.sendStatus(200);
-});
+}});
 
 app.get('/calculator', (req, res) => {
   res.send("hello!");
