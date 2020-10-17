@@ -18,13 +18,12 @@ return operator;
 }
 
 function clickHandlerSubmit() {
-    const calculations = [
+    const calculations = 
       {
       x: Number($('.field-number-x').val()),
       y: Number($('.field-number-y').val()),
       operator: operator,
       }
-    ];
     postGuesses(calculations);
     console.log(calculations);
     }
@@ -32,11 +31,11 @@ function clickHandlerSubmit() {
     function render(resultHistory) {
       console.log(resultHistory);
       const $answers = $('.js-calculations');
-    
+
       $answers.empty();
       for (let i = 0; i < resultHistory.length; i++) {
         const round = resultHistory[i];
-    
+
       $results.append(`<li>Round ${i + 1}</li>`);
         for (let totals of round) {
           $results.append(
@@ -50,7 +49,7 @@ function clickHandlerSubmit() {
       $.ajax({
         type: 'POST',
         url: '/math',
-        data: {playerGuesses}})
+        data: {math: playerGuesses}})
         .then(function (response) {
           console.log('POST of guesses:', response);
           // GET -> results
@@ -74,4 +73,3 @@ function clickHandlerSubmit() {
           console.log(err);
           alert('IT BROKE');
         });}
-    

@@ -34,7 +34,7 @@ app.use(express.static('public'));
 //}
 
 app.post('/math', (req, res) => {
-const calculations = req.body;
+const calculations = req.body.math
 console.log('calculations:', calculations );
 const answers = []; // results from calculator
 
@@ -42,7 +42,7 @@ for (let i =0; i<calculations.length; i++){
   const math = calculations[i];
   
   if (math.operator =='*') {
-  math.answer = multiplyNumbers(math.x, math.y)
+  math.answer = multiplyNumbers(, math.y)
   console.log('answer', math.answer);
 } else if  (math.operator =='/') {
   math.answer = divideNumbers(math.x, math.y)
