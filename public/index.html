@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Guess A Number!</title>
-  <script src="vendors/jquery.js"></script>
-  <script src="client.js"></script>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header></header>
-  <h1>Hi Friends!</h1>
-    <div class="calculator inputs">
-      <input type= "number" placeholder="Enter 1st Number Here" class='field-number-x'>
-    <button class= "js-add" value='+'>+</button>
-    <button class="js-subtract" value='-'>-</button>
-    <button class="js-divide" value='÷'>÷</button>
-    <button class="js-multiply" value='*'>*</button>
-    <input type= "number" placeholder="Enter 2nd Number Here" class='field-number-y'>
-    <button type="button" class="submit">=</button>
-    <button type="button" class="clear">C</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Guess A Number!</title>
+    <script src="vendors/jquery.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header><h1>Server Side Calculator</h1></header>
+    <div class="calculator-inputs">
+      <input
+        type="number"
+        placeholder="1st Number"
+        class="field-number-x input"
+      />
+      <button class="js-add css" value="+">+</button>
+      <button class="js-subtract css" value="-">-</button>
+      <button class="js-divide css" value="÷">÷</button>
+      <button class="js-multiply css" value="x">x</button>
+      <input
+        type="number"
+        placeholder="2nd Number"
+        class="field-number-y input"
+      />
+      <button type="button" class="submit css">=</button>
+      <button type="button" class="clear css">c</button>
     </div>
-     Answer: <span class="js-calculations"></span>
-      <ul class="array"></ul>    
-      <!-- calculation sequences-->
-    </ul>
+    <span class="js-calculations"></span>
+    <dl class="array"><h2>Calculations:</h2></dl>
   </body>
 </html>

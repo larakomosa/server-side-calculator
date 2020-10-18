@@ -87,8 +87,7 @@ function renderAnswerList(list) {
   $('.array').empty();
   for (let i = 0; i < list.length; i++) {
     $('.array').append(`
-         <li>${list[i]}</li>
-          `);
+    <dt>${list[i]}<dt>`);
   }
 }
 

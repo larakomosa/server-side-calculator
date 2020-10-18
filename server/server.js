@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 let answer;
+let preAnswer;
 let sequence;
 let answers = [];
 
@@ -21,14 +22,14 @@ app.post('/math', (req, res) => {
     answer = Number(calc.x) - Number(calc.y);
     sequence = calc.x + ' ' + '-' + ' ' + calc.y + ' ' + '=' + ' ' + answer;
     answers.push(sequence);
-  } else if (calc.operator === '*') {
+  } else if (calc.operator === 'x') {
     answer = Number(calc.x) * Number(calc.y);
-    sequence = calc.x + ' ' + '*' + ' ' + calc.y + ' ' + '=' + ' ' + answer;
+    sequence = calc.x + ' ' + 'x' + ' ' + calc.y + ' ' + '=' + ' ' + answer;
     answers.push(sequence);
   } else if (calc.operator === '÷') {
-    answer.toFixed(2) = Number(calc.x) / Number(calc.y);
-    sequence =
-      calc.x + ' ' + '÷' + ' ' + calc.y + ' ' + '=' + ' ' + answer.toFixed(2);
+    preAnswer = Number(calc.x) / Number(calc.y);
+    answer = preAnswer.toFixed(2);
+    sequence = calc.x + ' ' + '÷' + ' ' + calc.y + ' ' + '=' + ' ' + answer;
     answers.push(sequence);
   }
   res.sendStatus(200);
