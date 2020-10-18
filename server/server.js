@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const app = express();
 const PORT = 5000;
 let answer;
+let sequence;
+let answers= [];
 let calc;
 
 // This must be added before GET & POST routes.
@@ -15,29 +17,39 @@ app.use(express.static('public'));
 app.post('/math', (req, res) => {
 let calc = req.body.math;
 console.log('calculations:', calc );
-const answers = []; // results from calculator
+// results from calculator
 //for (let i =0; i<calculations.length; i++){
 //const math = calculations[i];
   if (calc.operator === '+') {
     answer = Number(calc.x) + Number(calc.y);
-    answers.push(calc.x, calc.operator, calc.y, "=", answer)
+    sequence = (calc.x + "+" + calc.y + "=" + answer);
+    answers.push(sequence) 
   } else if (calc.operator === '-') {
     answer = Number(calc.x) - Number(calc.y);
-    answers.push(calc.x, calc.operator, calc.y, "=", answer)
-  } else if (calc.operator === '*') {
-    answer = Number(calc.x) * Number(calc.y);
-    answers.push(calc.x, calc.operator, calc.y, "=", answer)
-  } else if (calc.operator === '/') {
-    answer = Number(calc.x) / Number(calc.y)
-    answers.push(calc.x, calc.operator, calc.y, "=", answer)
+    sequence = (calc.x + "-" + calc.y + "=" + answer);
+    answers.push(sequence) 
   }
-  console.log(calc.x, calc.operator, calc.y, "=", answer);
+  else if (calc.operator === '*') {
+    answer = Number(calc.x) * Number(calc.y);
+    sequence = (calc.x + "*" + calc.y + "=" + answer);
+    answers.push(sequence) 
+  } else if (calc.operator === '/') {
+    answer = Number(calc.x) / Number(calc.y);
+    sequence = (calc.x + "/" + calc.y + "=" + answer);
+    answers.push(sequence) 
+  }
+  console.log("answer",answer);
+  console.log("sequence",sequence);
   res.sendStatus(200);
 })
 
 app.get('/calculator', (req, res) => {
   let giveAnswers = [answer];
   res.send(giveAnswers);
+});
+
+app.get('/calculator/list', (req, res) => {
+  res.send(answers);
 });
 
 app.listen(PORT, () => {

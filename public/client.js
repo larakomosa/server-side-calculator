@@ -28,17 +28,9 @@ function clickHandlerSubmit() {
     console.log(calculations);
     }
 
-    function render(result) {
+    function renderResult(result) {
       const results = $('.js-calculations');
       results.text(result);}
-      //$answers.empty();
-      //$answers.append(`<li>Round ${response}</li>`);
-     //   for (let totals of round) {
-       //   $results.append(
-         //   `<li>${totals.x}, ${totals.operator}, ${totals.y}, ${totals.answers}</li>`
-          //);
-        //}}
-    
 
     function postGuesses(playerGuesses) {
       // console.log('sending: ', playerGuesses);
@@ -49,7 +41,8 @@ function clickHandlerSubmit() {
         .then(function (response) {
           console.log('POST Response:', response);
           // GET -> results
-          getResults();
+          giveAnswers();
+          answerList() 
         })
         .catch(function (err) {
           console.log(err);
@@ -63,12 +56,31 @@ function clickHandlerSubmit() {
         url: '/calculator',
       })
         .then(function (response) {
-          render(response);
-          console.log('GET', response);
+          renderResult(response);
+          console.log('GETanswer', response);
         })
         .catch(function (err) {
           console.log(err);
           alert('IT BROKE');
         })}
 
- 
+
+        function answerList() {
+          $.ajax({
+            type: 'GET',
+            url: '/calculator/list',
+          })
+            .then(function (response) {
+              renderArray(response);
+              console.log('GETarray', response);
+            })
+            .catch(function (err) {
+              console.log(err);
+              alert('IT BROKE');
+            })}
+    
+      function renderArray(listy){
+      let arrayList = $('#js-array');
+      for (let i = 0; i < listy.length; i++) {
+        arrayList.append(`<li>${response}</li>`);
+                }}
