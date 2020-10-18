@@ -7,10 +7,10 @@ function handleReady() {
   $('.js-subtract').on('click', conversion)
   $('.js-multiply').on('click', conversion)
   $('.js-divide').on('click', conversion)
+  $('.clear').on('click', clearCurrent)
 };
 
 let operator = '';
-
 function conversion(){
 operator = $(this).prop('value');
 console.log(operator);
@@ -20,8 +20,8 @@ return operator;
 function calculate() {
     const calculations = 
       {
-      x: ($('.field-number-x').val()),
-      y: ($('.field-number-y').val()),
+      x: $('.field-number-x').val(),
+      y: $('.field-number-y').val(),
       operator: operator,
       }
       $.ajax({
@@ -58,8 +58,8 @@ function calculate() {
 
     function renderAnswerDisplay(result) {
     const results = $('.js-calculations');
-    results.text(result);}
-
+    results.text(result);
+}
 
         function answerList() {
           $.ajax({
@@ -84,5 +84,10 @@ function calculate() {
          <li>${list[i]}</li>
           `);}}
             
+         function clearCurrent(answer){
+         $('.field-number-x').val(''),
+         $('.field-number-y').val(''),
+         $('.js-calculations').empty();
+         }
       
      
