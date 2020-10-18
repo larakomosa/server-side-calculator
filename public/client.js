@@ -2,7 +2,7 @@ $(document).ready(handleReady);
 
 function handleReady() {
   console.log('jquery is loaded!')
-  $(".submit").on('click', clickHandlerSubmit);
+  $(".submit").on('click',calculate);
   $('.js-add').on('click', conversion)
   $('.js-subtract').on('click', conversion)
   $('.js-multiply').on('click', conversion)
@@ -17,38 +17,30 @@ console.log(operator);
 return operator;
 }
 
-function clickHandlerSubmit() {
+function calculate() {
     const calculations = 
       {
-      x: Number($('.field-number-x').val()),
-      y: Number($('.field-number-y').val()),
+      x: ($('.field-number-x').val()),
+      y: ($('.field-number-y').val()),
       operator: operator,
       }
-    postGuesses(calculations);
-    console.log(calculations);
-    }
-
-    function renderResult(result) {
-      const results = $('.js-calculations');
-      results.text(result);}
-
-    function postGuesses(playerGuesses) {
-      // console.log('sending: ', playerGuesses);
       $.ajax({
         type: 'POST',
         url: '/math',
-        data: {math: playerGuesses}})
+        data: {math: calculations}})
         .then(function (response) {
-          console.log('POST Response:', response);
+          console.log('POST Message:', response);
           // GET -> results
           giveAnswers();
           answerList() 
         })
         .catch(function (err) {
           console.log(err);
-          alert('Post');
+          alert('Error- Post Side');
         })
+    console.log(calculations);
     }
+
 
     function giveAnswers() {
       $.ajax({
@@ -56,13 +48,17 @@ function clickHandlerSubmit() {
         url: '/calculator',
       })
         .then(function (response) {
-          renderResult(response);
-          console.log('GETanswer', response);
+          renderAnswerDisplay(response);
+          console.log('GET1 answer:', response);
         })
         .catch(function (err) {
           console.log(err);
           alert('IT BROKE');
         })}
+
+    function renderAnswerDisplay(result) {
+    const results = $('.js-calculations');
+    results.text(result);}
 
 
         function answerList() {
@@ -72,22 +68,20 @@ function clickHandlerSubmit() {
           })
           .then(function (response) {
           renderAnswers(response);
-          console.log('GETanswer', response);
+          console.log('GET2 answer', response);
         })
         .catch(function (err) {
           console.log(err);
           alert('IT BROKE');
         })}
           
-        function renderResult(result) {
-          const results = $('.js-calculations');
-          results.text(result);}
+      
           
         function renderAnswers(list) {
         $('.array').empty();
         for (let i = 0; i < list.length; i++) {   
           $('.array').append(`
-         <dt><b>${list}</dt>
+         <li>${list[i]}</li>
           `);}}
             
       
