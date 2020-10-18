@@ -1,9 +1,5 @@
 $(document).ready(handleReady);
 
-let x;
-let y;
-let operator = '';
-
 function handleReady() {
   $('.submit').on('click', calculate);
   $('.js-add').on('click', conversion);
@@ -13,6 +9,7 @@ function handleReady() {
   $('.clear').on('click', clearCurrent);
 }
 
+let operator = '';
 function conversion() {
   //takes 1 of 4 operator buttons and returns the specific clicked operator value
   operator = $(this).prop('value');
@@ -28,11 +25,11 @@ function calculate() {
     alert('Please add numbers to both input fields');
     return;
   } else if (
-    //prevents user from getting a infinity answer when dividing by Zero
+    //prevents user from getting an infinity answer when dividing by Zero
     (operator === '÷' && $('.field-number-x').val() == '0') ||
     (operator === '÷' && $('.field-number-y').val() == '0')
   ) {
-    alert('Your Answer is 0!');
+    alert('If it is divided by zero, the answer is 0!');
     return;
   } else {
     const calculations = {
@@ -93,7 +90,7 @@ function answerList() {
     })
     .catch(function (err) {
       console.log(err);
-      alert('Error-Get1 Side'); //indicates error and if it's on the POST or the GET side
+      alert('Error-Get2 Side'); //indicates error and if it's on the POST or the GET side
     });
 }
 
