@@ -7,13 +7,14 @@
     <title>Guess A Number!</title>
     <script src="vendors/jquery.js"></script>
     <script src="client.js"></script>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
     <header><h1>Server Side Calculator</h1></header>
     <div class="calculator-inputs">
       <input
         type="number"
+        id="x"
         placeholder="1st Number"
         class="field-number-x input"
       />
@@ -23,6 +24,7 @@
       <button class="js-multiply css" value="x">x</button>
       <input
         type="number"
+        id="y"
         placeholder="2nd Number"
         class="field-number-y input"
       />
@@ -30,6 +32,8 @@
       <button type="button" class="clear css">c</button>
     </div>
     <span class="js-calculations"></span>
-    <dl class="array"><h2>Calculations:</h2></dl>
+    <h2>Calculations:</h2>
+    <dl class="array"></dl>
+    <dt></dt>
   </body>
 </html>
