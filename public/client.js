@@ -70,17 +70,25 @@ function clickHandlerSubmit() {
             type: 'GET',
             url: '/calculator/list',
           })
-            .then(function (response) {
-              renderArray(response);
-              console.log('GETarray', response);
-            })
-            .catch(function (err) {
-              console.log(err);
-              alert('IT BROKE');
-            })}
-    
-      function renderArray(listy){
-      let arrayList = $('#js-array');
-      for (let i = 0; i < listy.length; i++) {
-        arrayList.append(`<li>${response}</li>`);
-                }}
+          .then(function (response) {
+          renderAnswers(response);
+          console.log('GETanswer', response);
+        })
+        .catch(function (err) {
+          console.log(err);
+          alert('IT BROKE');
+        })}
+          
+        function renderResult(result) {
+          const results = $('.js-calculations');
+          results.text(result);}
+          
+        function renderAnswers(list) {
+        $('.array').empty();
+        for (let i = 0; i < list.length; i++) {   
+          $('.array').append(`
+         <dt><b>${list}</dt>
+          `);}}
+            
+      
+     
