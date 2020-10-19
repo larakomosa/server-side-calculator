@@ -6,7 +6,7 @@ This application is user interface where the user can calculate 2 input values. 
 
 ## Screenshot
 
-![image](https://user-images.githubusercontent.com/67838283/96386309-8e2fe180-115f-11eb-8f3e-8f5e6a6fbf3c.png)
+![image](https://user-images.githubusercontent.com/67838283/96390497-9ba69500-117a-11eb-9a0b-e33fe454b53a.png)
 
 ## Usage
 
